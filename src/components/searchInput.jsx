@@ -8,6 +8,7 @@ export class SearchInput extends Component {
         label="Search For a Book"
         variant="outlined"
         size="small"
+        fullWidth
       />
     );
   }
