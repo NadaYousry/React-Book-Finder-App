@@ -1,12 +1,17 @@
 import React from "react";
 import "./App.css";
-import { SearchInput } from "./../components/searchInput";
+import { SearchForm } from "./../components/searchFrom";
+import { Container } from "@material-ui/core";
 function App() {
   return (
-    <div className="container">
-      <h1>Book Finder</h1>
-      <SearchInput />
-    </div>
+    <React.Fragment>
+      <Container maxWidth="md">
+        <h1>Book Finder</h1>
+        <div>
+          <SearchForm />
+        </div>
+      </Container>
+    </React.Fragment>
   );
 }
 
