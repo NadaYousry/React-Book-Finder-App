@@ -6,7 +6,6 @@ import { SingleBookCard } from "./singleBookCard";
 class BookList extends Component {
   renderList() {
     if (this.props.searchedBooks) {
-      console.log("response" + this.props.searchedBooks);
       return this.props.searchedBooks.map((book) => {
         return <SingleBookCard key={book.id} bookData={book} />;
       });
@@ -15,12 +14,10 @@ class BookList extends Component {
     }
   }
   render() {
-    console.log(this.props);
     return <div>{this.renderList()}</div>;
   }
 }
 const mapStateToProps = (state) => {
-  console.log({ state });
   return {
     searchedBooks: state.books,
   };

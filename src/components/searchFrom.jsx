@@ -8,7 +8,6 @@ import { serchOutput } from "../redux/actions";
 import { connect } from "react-redux";
 class SearchForm extends Component {
   renderForm = (formikProps) => {
-    console.log(this.props.serchOutput);
     return (
       <Box mb={5}>
         <form

@@ -47,7 +47,6 @@ export class SingleBookCard extends Component {
     }
   };
   render() {
-    console.log(this.props.bookData);
     return (
       <Box mb={5}>
         <Card>
