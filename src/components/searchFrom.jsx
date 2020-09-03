@@ -17,7 +17,7 @@ class SearchForm extends Component {
         >
           <FormGroup>
             <Grid container>
-              <Grid item xs={8}>
+              <Grid item xs={9}>
                 <SearchInput />
               </Grid>
               <Grid item xs={3}>

@@ -11,10 +11,17 @@ const getSearchResults = async (searchTerm) =>
   );
 
 export function* getApiData(action) {
+  let typeOfresponse = "";
   try {
     const response = yield call(getSearchResults, action.data.bookName);
-    // add new key
-    yield put({ type: RequestApiBook, payload: response.data.items });
+    // add new key and check if there is any data from response or not
+    if (response.data.totalItems !== 0) {
+      yield put({ type: RequestApiBook, payload: response.data.items });
+      return (typeOfresponse = ResponseFromApiBook);
+    } else {
+      yield put({ type: RequestApiBook, payload: null });
+      return (typeOfresponse = ResponseFromApiBook);
+    }
   } catch (e) {
     console.log(`${e} there is error`);
   }
