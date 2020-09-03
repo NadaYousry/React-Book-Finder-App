@@ -5,7 +5,6 @@ import { Formik } from "formik";
 import { Typography, FormGroup, Grid } from "@material-ui/core";
 import * as Yup from "yup";
 import { serchOutput } from "../redux/actions";
-import { reduxForm } from "redux-form";
 import { connect } from "react-redux";
 class SearchForm extends Component {
   renderForm = (formikProps) => {
