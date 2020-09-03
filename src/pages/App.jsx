@@ -1,7 +1,8 @@
 import React from "react";
 import "./App.css";
-import { SearchForm } from "./../components/searchFrom";
+import SearchForm from "./../components/searchFrom";
 import { Container } from "@material-ui/core";
+import BookList from "../components/bookList";
 function App() {
   return (
     <React.Fragment>
@@ -9,6 +10,9 @@ function App() {
         <h1>Book Finder</h1>
         <div>
           <SearchForm />
+        </div>
+        <div>
+          <BookList />
         </div>
       </Container>
     </React.Fragment>

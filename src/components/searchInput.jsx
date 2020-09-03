@@ -4,7 +4,7 @@ export class SearchInput extends Component {
   render() {
     return (
       <TextField
-        id="bookName"
+        name="bookName"
         label="Search For a Book"
         variant="outlined"
         size="small"

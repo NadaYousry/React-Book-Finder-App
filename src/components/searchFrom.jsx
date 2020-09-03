@@ -4,8 +4,12 @@ import { SearchInput } from "./searchInput";
 import { Formik } from "formik";
 import { Typography, FormGroup, Grid } from "@material-ui/core";
 import * as Yup from "yup";
-export class SearchForm extends Component {
+import { serchOutput } from "../redux/actions";
+import { reduxForm } from "redux-form";
+import { connect } from "react-redux";
+class SearchForm extends Component {
   renderForm = (formikProps) => {
+    console.log(this.props.serchOutput);
     return (
       <form
         onSubmit={formikProps.handleSubmit}
@@ -31,11 +35,20 @@ export class SearchForm extends Component {
       </form>
     );
   };
+
+  onSubmitForm = (formValues) => {
+    //hn3ml hna fire ll action creator lw el formvalues msh fdya
+    if (formValues) {
+      this.props.searchResult(formValues);
+    }
+  };
   render() {
     return (
       <Formik
         initialValues={{ bookName: "" }}
-        onSubmit={() => console.log("submitted")}
+        onSubmit={(data) =>
+          console.log("submitted", this.props.serchOutput(data))
+        }
         validationSchema={Yup.object().shape({
           bookName: Yup.string().required("Please Write a Book Name"),
         })}
@@ -45,3 +58,5 @@ export class SearchForm extends Component {
     );
   }
 }
+
+export default connect(null, { serchOutput })(SearchForm);

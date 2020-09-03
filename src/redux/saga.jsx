@@ -1,23 +1,26 @@
 import { takeEvery, call, put } from "redux-saga/effects";
-//-------------workers sagas--------------
+import { RequestApiBook, ResponseFromApiBook } from "./actions";
+import axios from "axios";
 
-const SEARCH_RESULT_SAGA = "SEARCH_RESULT_SAGA";
-const SEARCH_RESULT = "SEARCH_RESULT";
-//saga for getting results depending on a search word
+//-------------workers sagas will be fired on RequestApiBook--------------//
 
-export function* getSearchResults({ formValues }) {
+// Api Request
+const getSearchResults = async (searchTerm) =>
+  await axios.get(
+    `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}+terms`
+  );
+
+export function* getApiData(action) {
   try {
-    const response = yield call(
-      BooksApi.getSearchResults,
-      formValues.SearchField
-    );
-    yield put({ type: SEARCH_RESULT, payload: response.data.items });
-  } catch {
-    console.log("error");
+    const response = yield call(getSearchResults, action.data.bookName);
+    // add new key
+    yield put({ type: RequestApiBook, payload: response.data.items });
+  } catch (e) {
+    console.log(`${e} there is error`);
   }
 }
 
-//-------------watchers sagas-------------
-export default function* rootSaga() {
-  yield takeEvery(SEARCH_RESULT_SAGA, getSearchResults);
+//-------------watchers sagas-------------//
+export default function* Saga() {
+  yield takeEvery(ResponseFromApiBook, getApiData);
 }
