@@ -8,6 +8,7 @@ export class SearchButton extends Component {
         variant="contained"
         color="primary"
         size="large"
+        fullWidth
       >
         Search
       </Button>
